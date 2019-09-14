@@ -1,0 +1,23 @@
+.contact-detail{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.contact-name{
+    width: 25%;
+}
+
+.contact-mob-1{
+    width: 20%;
+
+}
+
+.contact-mob-2{
+    width: 20%;
+
+}
+
+.contact-mob-3{
+    width: 20%;
+}
