@@ -9,7 +9,8 @@ class Box extends Component {
   state = {
     personName: [],
     personContent: [],
-    currentPersonContent: []
+    currentPersonContent: [],
+    currentperosnName: ''
   }
 
   componentDidMount(){
@@ -27,29 +28,29 @@ class Box extends Component {
 
   }
 
-  showPersonContactDetail = (currentIndex) => {
-    console.log('click', currentIndex)
-
-    let currentPersonContent = this.state.personContent[currentIndex]
-
-    currentPersonContent.shift()
-
+  showPersonContactDetail = (currentIndex, currentperosnName) => {
     this.setState({
-      currentPersonContent: currentPersonContent
+      currentPersonContent: currentIndex,
+      currentperosnName: currentperosnName
+    }, () => {
+      console.log(this.state.currentPersonContent)
+      console.log(this.state.currentperosnName)
     })
   }
-
   
   render(){
-    const {personName, currentPersonContent} = this.state
+    const {personName, currentPersonContent, currentperosnName} = this.state
     return (
       <div className='box-container'>
         <Person
           personName = {personName}
           showPersonContactDetail = {this.showPersonContactDetail}
+          currentPersonContent = {currentPersonContent}
         />
         <PersonsContactDetail
           currentPersonContent = {currentPersonContent}
+          Persons = {Persons}
+          currentperosnName = {currentperosnName}
         />
       </div>
     )

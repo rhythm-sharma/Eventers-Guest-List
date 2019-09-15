@@ -1,0 +1,45 @@
+.contact-detail{
+    display: flex;
+    flex-direction: row;
+    padding: 0 10px 0 10px;
+    width: 100%;
+}
+
+.serial-num{
+    width: 8%;
+}
+
+.contact-name{
+    width: 23%;
+}
+
+
+.contact-mob-container {
+    width: 23%;
+}
+.contact-mob-1{
+    display: flex;
+    flex-direction: row;
+}
+
+.contact-mob-2{
+    display: flex;
+    flex-direction: row;
+}
+
+.contact-mob-3{
+    display: flex;
+    flex-direction: row;
+}
+
+.fa-check-circle{
+    margin: 16px 5px 16px 5px; 
+}
+
+.fa-times-circle{
+    margin: 16px 5px 16px 5px;
+}
+
+.grey {
+    color: rgb(170, 170, 170)
+}

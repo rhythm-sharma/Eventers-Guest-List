@@ -2,15 +2,18 @@ import React from 'react';
 import './Persons.css'
 
 const Persons = (props) => {
+
         let personNameList = props.personName.map((item, index) => {
             return (
-                <div 
+                <div className='person'
                     key={index}
-                    className='person'
-                    >
+                >
                     <p  className='person-text'
                         id={index}
-                        onClick={(e) => props.showPersonContactDetail(e.target.id)}
+                        value = {item}
+                        onClick={(e) => {
+                            props.showPersonContactDetail(e.target.id, item)
+                        }}
                     >
                         {item + ' List'}
                     </p>
@@ -19,7 +22,7 @@ const Persons = (props) => {
         })
         
         return(
-            <div className='personlist-container'>
+            <div className='person-list-container'>
                 {personNameList}
             </div>
         )

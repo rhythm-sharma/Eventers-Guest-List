@@ -1,0 +1,17 @@
+.fa-check-circle{
+    font-size: 20px;
+}
+
+.tick-btn{
+    cursor: pointer;
+}
+
+.not-selected {
+    color:  rgb(170, 170, 170);
+}
+
+.green{
+    color: green;
+}
+
+

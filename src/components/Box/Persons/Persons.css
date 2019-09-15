@@ -1,5 +1,5 @@
-.personlist-container{
-    width: 20%;
+.person-list-container{
+    width: 16%;
     font-size: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
 
@@ -7,12 +7,13 @@
     height: 100px;
     width: 100%;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .person-text{
-    text-align: center;
-    align-content: center;
-    align-items: center;
-    margin-bottom: auto;
-    margin-left: auto;
+    cursor: pointer;
+    left: 50%;
+    top: 50%;
 }
