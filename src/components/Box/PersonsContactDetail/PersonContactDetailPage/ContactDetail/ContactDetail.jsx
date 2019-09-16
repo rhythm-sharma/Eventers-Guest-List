@@ -10,8 +10,6 @@ class ContactDetail extends Component {
         }
     }
 
-    
-
     render(){
 
         return(
@@ -31,7 +29,7 @@ class ContactDetail extends Component {
                             number = {this.props.mob1}
                             StoreTempArray = {this.props.StoreTempArray}
                             TotalTickSelected = {this.props.TotalTickSelected}
-                            RemoveTempArray = {this.RemoveTempArray}
+                            RemoveTempArray = {this.props.RemoveTempArray}
                        />
                    </div>
                 }
@@ -49,7 +47,7 @@ class ContactDetail extends Component {
                             number = {this.props.mob2}
                             StoreTempArray = {this.props.StoreTempArray}
                             TotalTickSelected = {this.props.TotalTickSelected}
-                            RemoveTempArray = {this.RemoveTempArray}
+                            RemoveTempArray = {this.props.RemoveTempArray}
                        />
                    </div>
                 }
@@ -67,7 +65,7 @@ class ContactDetail extends Component {
                             number = {this.props.mob3}
                             StoreTempArray = {this.props.StoreTempArray}
                             TotalTickSelected = {this.props.TotalTickSelected}
-                            RemoveTempArray = {this.RemoveTempArray}
+                            RemoveTempArray = {this.props.RemoveTempArray}
                        />
                    </div>
                 }

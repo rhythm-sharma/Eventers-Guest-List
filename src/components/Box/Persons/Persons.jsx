@@ -23,7 +23,21 @@ const Persons = (props) => {
         
         return(
             <div className='person-list-container'>
+                <div className='person-container-heading'>
+                    <p className='person-text'>Select List</p>
+                </div>
                 {personNameList}
+                <div className='guest-list'>
+                <div className='person'>
+                    <p  className='person-text'
+                        onClick={(e) => {
+                            props.ShowGusetList()
+                        }}
+                    >
+                        Final Guest List
+                    </p>
+                </div>
+                </div>
             </div>
         )
 }

@@ -17,3 +17,12 @@
     left: 50%;
     top: 50%;
 }
+
+.person-container-heading{
+    background-color: #7485f3;
+    color: white;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

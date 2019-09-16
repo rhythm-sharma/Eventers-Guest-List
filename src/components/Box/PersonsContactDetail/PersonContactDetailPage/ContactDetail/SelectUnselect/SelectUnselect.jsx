@@ -19,7 +19,7 @@ class SelectUnselect extends Component {
             this.props.StoreTempArray(number, name, currentperosnName, index)
         }
         if(tickActive === true){
-            this.props.RemoveTempArray()    
+            this.props.RemoveTempArray(number)    
         }
     };
     

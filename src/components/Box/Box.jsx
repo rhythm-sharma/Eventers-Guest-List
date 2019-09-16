@@ -10,7 +10,8 @@ class Box extends Component {
     personName: [],
     personContent: [],
     currentPersonContent: [],
-    currentperosnName: ''
+    currentperosnName: '',
+    showGusetList: false,
   }
 
   componentDidMount(){
@@ -30,11 +31,18 @@ class Box extends Component {
 
   showPersonContactDetail = (currentIndex, currentperosnName) => {
     this.setState({
+      showGusetList: false,
       currentPersonContent: currentIndex,
       currentperosnName: currentperosnName
     }, () => {
       console.log(this.state.currentPersonContent)
       console.log(this.state.currentperosnName)
+    })
+  }
+
+  ShowGusetList = () => {
+    this.setState({
+      showGusetList: true
     })
   }
   
@@ -46,11 +54,14 @@ class Box extends Component {
           personName = {personName}
           showPersonContactDetail = {this.showPersonContactDetail}
           currentPersonContent = {currentPersonContent}
+          ShowGusetList = {this.ShowGusetList}
         />
         <PersonsContactDetail
           currentPersonContent = {currentPersonContent}
           Persons = {Persons}
           currentperosnName = {currentperosnName}
+          showGusetList = {this.state.showGusetList}
+          ShowGusetList = {this.ShowGusetList}
         />
       </div>
     )
