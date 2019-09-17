@@ -32,7 +32,6 @@ class SelectUnselect extends Component {
                     onClick={(e) => {
                         this.toggleTickClass(this.props.currentperosnName, this.props.name, this.props.number, e.target.className, this.state.tickActive, this.props.srNum, this.props.currentPersonContent, this.props.columnNum)
                         this.props.ShowConfirmChangesContainer()
-                        // this.TotalTickSelected(e.target.className)
                     }}
                     className={this.state.tickActive ? 'fa fa-check-circle green': 'fa fa-check-circle not-selected'} aria-hidden="true"></i>
             </div>
