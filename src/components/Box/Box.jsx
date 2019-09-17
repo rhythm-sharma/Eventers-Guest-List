@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Persons} from '../Assets/RawData.js';
+import emptyIllustration from '../Assets/empty_illustration.svg';
 import Person from './Persons/Persons'
 import PersonsContactDetail from './PersonsContactDetail/PersonsContactDetail'
 import './Box.css';
@@ -7,6 +8,7 @@ import './Box.css';
 class Box extends Component {
 
   state = {
+    blankPage: true,
     personName: [],
     personContent: [],
     currentPersonContent: [],
@@ -32,6 +34,7 @@ class Box extends Component {
 
   showPersonContactDetail = (currentIndex, currentperosnName) => {
     this.setState({
+      blankPage: false,
       showGusetList: false,
       currentPersonContent: currentIndex,
       currentperosnName: currentperosnName
@@ -45,25 +48,31 @@ class Box extends Component {
   }
   
   render(){
-    const {personName, currentPersonContent, currentperosnName, numberOfList} = this.state
-    return (
-      <div className='box-container'>
-        <Person
-          personName = {personName}
-          showPersonContactDetail = {this.showPersonContactDetail}
-          currentPersonContent = {currentPersonContent}
-          ShowGusetList = {this.ShowGusetList}
-        />
-        <PersonsContactDetail
-          currentPersonContent = {currentPersonContent}
-          Persons = {Persons}
-          currentperosnName = {currentperosnName}
-          showGusetList = {this.state.showGusetList}
-          ShowGusetList = {this.ShowGusetList}
-          numberOfList = {numberOfList}
-        />
-      </div>
-    )
+    const {personName, currentPersonContent, currentperosnName, numberOfList, blankPage} = this.state
+      return (
+        <div className='box-container'>
+          <Person
+            personName = {personName}
+            showPersonContactDetail = {this.showPersonContactDetail}
+            currentPersonContent = {currentPersonContent}
+            ShowGusetList = {this.ShowGusetList}
+          />
+          { (blankPage) ?
+            <div className='persons-contact-detail-main-container center'>
+                <h3 className='black-page-text'>Please Select a List to start</h3>
+                <img className='empty-illustration' alt='Please select list' src={emptyIllustration} />
+              </div>
+            :  <PersonsContactDetail
+                currentPersonContent = {currentPersonContent}
+                Persons = {Persons}
+                currentperosnName = {currentperosnName}
+                showGusetList = {this.state.showGusetList}
+                ShowGusetList = {this.ShowGusetList}
+                numberOfList = {numberOfList}
+              />
+          }
+        </div>
+      )
   }
 
 }

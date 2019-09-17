@@ -8,15 +8,17 @@ const Persons = (props) => {
                 <div className='person'
                     key={index}
                 >
-                    <p  className='person-text'
-                        id={index}
-                        value = {item}
-                        onClick={(e) => {
-                            props.showPersonContactDetail(e.target.id, item)
-                        }}
-                    >
-                        {item + ' List'}
-                    </p>
+                    <div className='border'>
+                        <p  className='person-text'
+                            id={index}
+                            value = {item}
+                            onClick={(e) => {
+                                props.showPersonContactDetail(e.target.id, item)
+                            }}
+                        >
+                            {item + ' List'}
+                        </p>
+                    </div>
                 </div>
             )
         })

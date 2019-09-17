@@ -18,6 +18,18 @@
     top: 50%;
 }
 
+.border{
+    /* left: 50%;
+    top: 50%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    height: 45px;
+    width: 70%;
+    border: 1px solid #ccc;
+}
+
 .person-container-heading{
     background-color: #7485f3;
     color: white;
