@@ -110,11 +110,11 @@ class PersonContactDetailPage extends Component {
         const tempStorage = this.state.tempStorage
         
         for(let i = 0; i < tempStorage.length; i++) {
-            if(number === tempStorage[i][3]) {
+            if(number === tempStorage[i][4]) {
                 this.state.tempStorage[i].splice(2,1)
-            }else if(number === tempStorage[i][4]) {
-                this.state.tempStorage[i].splice(3,1)
             }else if(number === tempStorage[i][5]) {
+                this.state.tempStorage[i].splice(3,1)
+            }else if(number === tempStorage[i][6]) {
                 this.state.tempStorage[i].splice(4,1)
             }
         }
