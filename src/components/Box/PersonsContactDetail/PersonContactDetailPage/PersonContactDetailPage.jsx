@@ -56,6 +56,7 @@ class PersonContactDetailPage extends Component {
 
             // using tempLocalStorage to check number already selected or not 
             for(let i = 0; i < tempLocalStorage.length; i++) {
+                console.log(tempLocalStorage[i][4]);
                 if(number === parseInt(tempLocalStorage[i][4], 10)) {
                     alert(`The number ${tempLocalStorage[i][4]} already selcted with name: ${tempLocalStorage[i][3]} in the ${tempLocalStorage[i][2]}'s list Please`);
                     alert(` if you want to save this number with current name then Please Remove number from Guest List`);
@@ -79,18 +80,18 @@ class PersonContactDetailPage extends Component {
             // checking number exist in tempStorage(before saving tempArray to localStorage) or not
             if(numberExistInLocalStorage === false) {
                 for(let i = 0; i < tempStorage.length; i++) {
-                    console.log(tempLocalStorage[i])
-                    if(number === tempStorage[i][4]) {
-                        alert(`The number already selcted with name: ${tempStorage[i][3]} in the ${tempStorage[i][2]}'s list Please`);
+                    console.log(tempStorage[i])
+                    if(number === tempStorage[i][3]) {
+                        alert(`The number already selcted with name: ${tempStorage[i][2]} in the ${tempStorage[i][1]}'s list Please`);
                         alert('Please select only one number');
                         this.state.tempStorage.pop();
-                    }else if(number === tempStorage[i][5]) {
-                        alert(`The number already selcted with name: ${tempStorage[i][3]} in the ${tempStorage[i][2]}'s list Please`);
+                    }else if(number === tempStorage[i][4]) {
+                        alert(`The number already selcted with name: ${tempStorage[i][2]} in the ${tempStorage[i][1]}'s list Please`);
                         alert('Please select only one number');
                         this.state.tempStorage.pop();
                         return true;
-                    }else if(number === tempStorage[i][6]) {
-                        alert(`The number already selcted with name: ${tempStorage[i][3]} in the ${tempStorage[i][2]}'s list Please`);
+                    }else if(number === tempStorage[i][5]) {
+                        alert(`The number already selcted with name: ${tempStorage[i][2]} in the ${tempStorage[i][1]}'s list Please`);
                         alert('Please select only one number');
                         this.state.tempStorage.pop();
                     }
@@ -144,7 +145,7 @@ class PersonContactDetailPage extends Component {
                     <div className='confirm-changes-container'>
                         <div className='save-btn' onClick={this.SaveToLocalStorage}>Save</div>
                         <div className='cancel-btn' onClick={ this.CloseConfirmChangesContainer}>Cancel</div>
-                        <p className='confirm-changes-note'>*Note: Please press save button to update Guest list*{this.props.currentPersonContent}</p>
+                        <p className='confirm-changes-note'>*Note: Please press save button to update Guest list*</p>
                     </div>
                     : null
                 }
