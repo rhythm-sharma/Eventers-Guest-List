@@ -18,54 +18,60 @@ class ContactDetail extends Component {
                 <p className='contact-name'>{this.props.name}</p>
                 <div className='contact-mob-container'>
                 { (this.props.mob1 == null) ?
-                   <p className='grey'>null</p> :
+                   <p className='grey'>----</p> :
                    <div className='contact-mob-1'>
                        <p>{this.props.mob1}</p>
                        <SelectUnselect
                             srNum = {this.props.srNum + 1}
                             ShowConfirmChangesContainer = {this.props.ShowConfirmChangesContainer}
                             currentperosnName = {this.props.currentperosnName}
+                            currentPersonContent = {this.props.currentPersonContent}
                             name = {this.props.name}
                             number = {this.props.mob1}
                             StoreTempArray = {this.props.StoreTempArray}
                             TotalTickSelected = {this.props.TotalTickSelected}
                             RemoveTempArray = {this.props.RemoveTempArray}
+                            columnNum = {3}
                        />
                    </div>
                 }
                 </div>
                 <div className='contact-mob-container'>
                 { (this.props.mob2 == null) ?
-                   <p className='grey'>null</p> :
+                   <p className='grey'>----</p> :
                    <div className='contact-mob-2'>
                        <p>{this.props.mob2}</p>
                        <SelectUnselect
                             srNum = {this.props.srNum + 1}
                             ShowConfirmChangesContainer = {this.props.ShowConfirmChangesContainer}
                             currentperosnName = {this.props.currentperosnName}
+                            currentPersonContent = {this.props.currentPersonContent}
                             name = {this.props.name}
                             number = {this.props.mob2}
                             StoreTempArray = {this.props.StoreTempArray}
                             TotalTickSelected = {this.props.TotalTickSelected}
                             RemoveTempArray = {this.props.RemoveTempArray}
+                            columnNum = {4}
                        />
                    </div>
                 }
                 </div>
                 <div className='contact-mob-container'>
                 { (this.props.mob3 == null) ?
-                   <p className='grey'>null</p> :
+                   <p className='grey'>----</p> :
                    <div className='contact-mob-3'>
                        <p>{this.props.mob3}</p>
                        <SelectUnselect
                             srNum = {this.props.srNum + 1}
                             ShowConfirmChangesContainer = {this.props.ShowConfirmChangesContainer}
                             currentperosnName = {this.props.currentperosnName}
+                            currentPersonContent = {this.props.currentPersonContent}
                             name = {this.props.name}
                             number = {this.props.mob3}
                             StoreTempArray = {this.props.StoreTempArray}
                             TotalTickSelected = {this.props.TotalTickSelected}
                             RemoveTempArray = {this.props.RemoveTempArray}
+                            columnNum = {5}
                        />
                    </div>
                 }

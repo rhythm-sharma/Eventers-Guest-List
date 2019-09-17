@@ -41,5 +41,6 @@
 }
 
 .grey {
-    color: rgb(170, 170, 170)
+    margin-left: 10px; 
+    color: rgb(170, 170, 170);
 }

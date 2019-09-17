@@ -10,12 +10,13 @@ class PersonContactDetailPage extends Component {
             showConfirmChangesContainer: false,
             tempStorage: [],
             totalTickSelected: 0,
+            currentSrNum: null
         }
     }
 
-    componentDidMount(){
-        console.log(this.props.currentperosnName)
-    }
+    // componentDidMount(){
+    //     console.log(this.props.currentperosnName)
+    // }
 
     ShowConfirmChangesContainer = () => {
         this.setState({
@@ -32,68 +33,119 @@ class PersonContactDetailPage extends Component {
     SaveToLocalStorage = () => {
         const tempStorage = this.state.tempStorage
         let firstKey = parseInt(this.props.currentPersonContent, 10) + 1
-        console.log(firstKey);
         for(let i = 0; i < tempStorage.length; i++){
-                localStorage.setItem(`${firstKey}-${localStorage.length+1}`, `${tempStorage[i][0]},${tempStorage[i][1]},${tempStorage[i][2]},${tempStorage[i][3]},${tempStorage[i][4]}` )
+            localStorage.setItem(`${firstKey}-${tempStorage[i][0]}`, `${tempStorage[i][0]},${tempStorage[i][1]},${tempStorage[i][2]},${tempStorage[i][3]},${tempStorage[i][4]},${tempStorage[i][5]}` )
         }
 
         this.CloseConfirmChangesContainer()
         this.props.ShowGusetList();
     }
 
-    StoreTempArray = (number, name, currentperosnName) => {
+    StoreTempArray = (srNum, currentperosnName, name, number, columnNum) => {
         const tempStorage = this.state.tempStorage
-        // check Number exists or not
-        if(tempStorage.length === 0) {
-            let tempStorage = []
-            tempStorage.push([name, currentperosnName, number])
-            this.setState({
-                tempStorage: tempStorage
-            })
-        }else {
-            // Just change this algorithm, use localStorage to check the number is already stored in local Storage or not 
-            this.setState({
-                tempStorage: [...this.state.tempStorage, [name, currentperosnName, number]]
-            },() => {
+        const currentTempStorage = [srNum, currentperosnName, name]
+        // currentTempStorage.push(number)
+        currentTempStorage[columnNum] = number
+        this.setState({
+            tempStorage: [...this.state.tempStorage, currentTempStorage]
+        },() => {
+
+            let numberExistInLocalStorage = false;
+            
+            // checking number exist in LoacalStorage or not
+            // this.NumberExistInLocalStorage(number, numberExistInLocalStorage)
+            // let numberOfList = this.props.numberOfList
+            // let currentlocalStorageEl = []
+            // for(let j = 0; j < numberOfList; j++) {
+            //     for(let i = 0; i < localStorage.length; i++) {
+            //         if(localStorage.getItem(`${j+1}-${i+1}`) !== null) {
+            //             console.log(localStorage.getItem(`${j+1}-${i+1}`))
+            //             currentlocalStorageEl.push(localStorage.getItem(`${j+1}-${i+1}`).split(','))
+            //             console.log('currentlocalStorageEl: ', currentlocalStorageEl);
+            //             console.log(i);         
+            //             if(number === parseInt(currentlocalStorageEl[i][3], 10)) {
+            //                 alert(`The number ${currentlocalStorageEl[i][3]} already selcted with name: ${currentlocalStorageEl[i][2]} in the ${currentlocalStorageEl[i][1]}'s list Please Unselect the current number`);
+            //                 this.state.tempStorage.pop();
+            //                 numberExistInLocalStorage = true
+            //             }else if(number === parseInt(currentlocalStorageEl[i][4], 10)) {
+            //                 alert(`The number ${currentlocalStorageEl[i][4]} already selcted with name: ${currentlocalStorageEl[i][2]} in the ${currentlocalStorageEl[i][1]}'s list Please Unselect the current number`);
+            //                 this.state.tempStorage.pop();
+            //                 numberExistInLocalStorage = true
+            //             }else if(number === parseInt(currentlocalStorageEl[i][5], 10)) {
+            //                 alert(`The number ${currentlocalStorageEl[i][5]} already selcted with name: ${currentlocalStorageEl[i][2]} in the ${currentlocalStorageEl[i][1]}'s list Please Unselect the current number`);
+            //                 this.state.tempStorage.pop();
+            //                 numberExistInLocalStorage = true
+            //             }else {
+            //                 numberExistInLocalStorage = false;
+            //             }
+            //         }
+            //     }
+            // }
+            
+            let currentlocalStorageEl = []
+            for (let i = 0; i < localStorage.length; i++) {  
+                let key = localStorage.key(i);
+                currentlocalStorageEl.push(localStorage.getItem(key).split(','))
+            }  
+
+            for(let i = 0; i < currentlocalStorageEl.length; i++) {
+                if(number === parseInt(currentlocalStorageEl[i][3], 10)) {
+                    alert(`loacalStorage The number ${currentlocalStorageEl[i][3]} already selcted with name: ${currentlocalStorageEl[i][2]} in the ${currentlocalStorageEl[i][1]}'s list Please Unselect the current number`);
+                    this.state.tempStorage.pop();
+                    numberExistInLocalStorage = true
+                }else if(number === parseInt(currentlocalStorageEl[i][4], 10)) {
+                    alert(`loacalStorage The number ${currentlocalStorageEl[i][4]} already selcted with name: ${currentlocalStorageEl[i][2]} in the ${currentlocalStorageEl[i][1]}'s list Please Unselect the current number`);
+                    this.state.tempStorage.pop();
+                    numberExistInLocalStorage = true
+                }else if(number === parseInt(currentlocalStorageEl[i][5], 10)) {
+                    alert(`loacalStorage The number ${currentlocalStorageEl[i][5]} already selcted with name: ${currentlocalStorageEl[i][2]} in the ${currentlocalStorageEl[i][1]}'s list Please Unselect the current number`);
+                    this.state.tempStorage.pop();
+                    numberExistInLocalStorage = true
+                }else {
+                    numberExistInLocalStorage = false;
+                }
+            }
+
+            // checking number exist in tempStorage(before saving tempArray to localStorage) or not
+            if(numberExistInLocalStorage === false) {
                 for(let i = 0; i < tempStorage.length; i++) {
-                    if(number === tempStorage[i][2]) {
-                        alert(`The number already selcted with name: ${tempStorage[i][0]} in the ${tempStorage[i][1]}'s list Please Unselect the current number`);
+                    if(number === tempStorage[i][3]) {
+                        alert(`The number already selcted with name: ${tempStorage[i][3]} in the ${tempStorage[i][2]}'s list Please Unselect the current number`);
                         this.state.tempStorage.pop();
-                    }else if(number === tempStorage[i][3]) {
-                        alert(`The number already selcted with name: ${tempStorage[i][0]} in the ${tempStorage[i][1]}'s list Please Unselect the current number`);
+                    }else if(number === tempStorage[i][4]) {
+                        alert(`The number already selcted with name: ${tempStorage[i][4]} in the ${tempStorage[i][2]}'s list Please Unselect the current number`);
                         this.state.tempStorage.pop();
                         return true;
-                    }else if(number === tempStorage[i][4]) {
-                        alert(`The number already selcted with name: ${tempStorage[i][0]} in the ${tempStorage[i][1]}'s list Please Unselect the current number`);
+                    }else if(number === tempStorage[i][5]) {
+                        alert(`The number already selcted with name: ${tempStorage[i][5]} in the ${tempStorage[i][2]}'s list Please Unselect the current number`);
                         this.state.tempStorage.pop();
                     }
                     else {
-                        if(name === tempStorage[i][0]){
+                        if(name === tempStorage[i][2]){
                             tempStorage[i].push(number)
                             this.state.tempStorage.pop()
                         }
                     }
                 }
-                console.log(this.state.tempStorage);
-            })
-        }
+            }
+        })
     }
 
     RemoveTempArray = (number) => {
         const tempStorage = this.state.tempStorage
         
         for(let i = 0; i < tempStorage.length; i++) {
-            if(number === tempStorage[i][2]) {
+            if(number === tempStorage[i][3]) {
                 this.state.tempStorage[i].splice(2,1)
-            }else if(number === tempStorage[i][3]) {
-                this.state.tempStorage[i].splice(3,1)
             }else if(number === tempStorage[i][4]) {
+                this.state.tempStorage[i].splice(3,1)
+            }else if(number === tempStorage[i][5]) {
                 this.state.tempStorage[i].splice(4,1)
             }
         }
     }
 
-    TotalTickSelected = (className) => {
+    TotalTickSelected = (className, currentPersonContent) => {
         if('fa fa-check-circle not-selected' === className){
             const totalTickSelected = this.state.totalTickSelected + 1
             this.setState({
@@ -142,6 +194,7 @@ class PersonContactDetailPage extends Component {
                                 mob3 = {item.Mobile_3}
                                 ShowConfirmChangesContainer = {this.ShowConfirmChangesContainer}
                                 currentperosnName = {this.props.currentperosnName}
+                                currentPersonContent = {this.props.currentPersonContent}
                                 StoreTempArray = {this.StoreTempArray}
                                 TotalTickSelected = {this.TotalTickSelected}
                                 RemoveTempArray = {this.RemoveTempArray}

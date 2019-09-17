@@ -24,7 +24,8 @@ class Box extends Component {
     
     this.setState({
       personContent: Persons,
-      personName: personName
+      personName: personName,
+      numberOfList: personName.length
     })
 
   }
@@ -34,9 +35,6 @@ class Box extends Component {
       showGusetList: false,
       currentPersonContent: currentIndex,
       currentperosnName: currentperosnName
-    }, () => {
-      console.log(this.state.currentPersonContent)
-      console.log(this.state.currentperosnName)
     })
   }
 
@@ -47,7 +45,7 @@ class Box extends Component {
   }
   
   render(){
-    const {personName, currentPersonContent, currentperosnName} = this.state
+    const {personName, currentPersonContent, currentperosnName, numberOfList} = this.state
     return (
       <div className='box-container'>
         <Person
@@ -62,6 +60,7 @@ class Box extends Component {
           currentperosnName = {currentperosnName}
           showGusetList = {this.state.showGusetList}
           ShowGusetList = {this.ShowGusetList}
+          numberOfList = {numberOfList}
         />
       </div>
     )

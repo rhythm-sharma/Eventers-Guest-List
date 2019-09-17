@@ -16,7 +16,7 @@ class PersonsContactDetail extends Component {
         }
 
         componentDidUpdate(prevProps) {
-            // update if Guest list data is modified
+            // it updates if Guest list data is modified
             if (prevProps.showGusetList !== this.props.showGusetList) {
                 this.DisplayGuestList();
             }
@@ -25,24 +25,23 @@ class PersonsContactDetail extends Component {
         
         DisplayGuestList = () => {
             let localStorageArray = [];
-            console.log(this.props.Persons.length);
             if(localStorage.length === 0){
                 return true;
             }else{
 
-                for(let i = 0; i < localStorage.length; i++){
+                for(let i = 0; i < this.props.Persons[0].length; i++){
                     if(localStorage.getItem(`1-${i+1}`)){
                         localStorageArray.push(localStorage.getItem(`1-${i+1}`).split(','))
                     }
                 }
                 
-                for(let i = 0; i < localStorage.length; i++){
+                for(let i = 0; i < this.props.Persons[1].length; i++){
                     if(localStorage.getItem(`2-${i+1}`)){
                         localStorageArray.push(localStorage.getItem(`2-${i+1}`).split(','))
                     }
                 }
 
-                for(let i = 0; i < localStorage.length; i++){
+                for(let i = 0; i < this.props.Persons[2].length; i++){
                     if(localStorage.getItem(`3-${i+1}`)){
                         localStorageArray.push(localStorage.getItem(`3-${i+1}`).split(','))
                     }
@@ -57,12 +56,13 @@ class PersonsContactDetail extends Component {
         render() {
             let PersonContactDetailPages = this.props.Persons.map((item, index) => {
                 return(
-                    <PersonContactDetailPage 
+                    <PersonContactDetailPage
                         key={index}
                         PageDetail={item}
                         currentPersonContent = {this.props.currentPersonContent}
                         currentperosnName={this.props.currentperosnName}
                         ShowGusetList = {this.props.ShowGusetList}
+                        numberOfList = {this.props.numberOfList}
                     />
                 )
             })
@@ -85,20 +85,29 @@ class PersonsContactDetail extends Component {
                                     return (
                                         <div key={index} className='contact-detail'>
                                             <p className='serial-num'>{index + 1}</p>
-                                            <p className='contact-name'>{item[0]}</p>
+                                            <p className='contact-name'>{item[2]}</p>
                                             <div className='contact-mob-container'>
                                                 <div className='contact-mob-1'>
-                                                    <p>{item[2]}</p>
+                                                {(item[3] === 'undefined') ?
+                                                    <p>----</p>
+                                                    :<p>{item[3]}</p>
+                                                }
                                                 </div>
                                             </div>
                                             <div className='contact-mob-container'>
                                                 <div className='contact-mob-2'>
-                                                    <p>{item[3]}</p>
+                                                {(item[4] === 'undefined') ?
+                                                    <p>----</p>
+                                                    :<p>{item[4]}</p>
+                                                }
                                                 </div>
                                             </div>
                                             <div className='contact-mob-container'>
                                                 <div className='contact-mob-3'>
-                                                    <p>{item[4]}</p>
+                                                {(item[5] === 'undefined') ?
+                                                    <p>----</p>
+                                                    :<p>{item[5]}</p>
+                                                }
                                                 </div>
                                             </div>
                                         </div>

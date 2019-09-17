@@ -11,15 +11,15 @@ class SelectUnselect extends Component {
         }
     }
 
-    toggleTickClass = (currentperosnName, name, number, className, tickActive, index) => {
+    toggleTickClass = (currentperosnName, name, number, className, tickActive, srNum, currentPersonContent, columnNum) => {
         const currentState = this.state.tickActive;
         this.setState({ tickActive: !currentState });
-        this.props.TotalTickSelected(className);
+        this.props.TotalTickSelected(className, currentPersonContent);
         if(tickActive === false){
-            this.props.StoreTempArray(number, name, currentperosnName, index)
+            this.props.StoreTempArray( srNum, currentperosnName, name, number, columnNum)
         }
         if(tickActive === true){
-            this.props.RemoveTempArray(number)    
+            this.props.RemoveTempArray(number)
         }
     };
     
@@ -30,7 +30,7 @@ class SelectUnselect extends Component {
                     id={this.props.srNum}
                     value={this.props.keyValue}
                     onClick={(e) => {
-                        this.toggleTickClass(this.props.currentperosnName, this.props.name, this.props.number, e.target.className, this.state.tickActive, this.props.srNum)
+                        this.toggleTickClass(this.props.currentperosnName, this.props.name, this.props.number, e.target.className, this.state.tickActive, this.props.srNum, this.props.currentPersonContent, this.props.columnNum)
                         this.props.ShowConfirmChangesContainer()
                         // this.TotalTickSelected(e.target.className)
                     }}
